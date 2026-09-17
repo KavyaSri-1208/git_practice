@@ -1,0 +1,787 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --ink: #24304a;
+  --muted: #667085;
+  --purple: #7557e8;
+  --purple-dark: #5940c7;
+  --pink: #ff6fae;
+  --yellow: #ffc94d;
+  --mint: #62d8ba;
+  --sky: #68c9f5;
+  --cream: #fffaf0;
+  --white: #ffffff;
+  --line: #e8eaf2;
+  --shadow: 0 18px 45px rgba(52, 45, 95, 0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Nunito", system-ui, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 15%, rgba(255, 211, 90, .35), transparent 20rem),
+    radial-gradient(circle at 90% 30%, rgba(104, 201, 245, .25), transparent 22rem),
+    linear-gradient(145deg, #fff8ee 0%, #f7f4ff 48%, #effcff 100%);
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 0;
+}
+
+.sky-shape {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: .35;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.shape-one {
+  width: 340px;
+  height: 340px;
+  background: #ffd66d;
+  top: -130px;
+  left: -120px;
+}
+
+.shape-two {
+  width: 390px;
+  height: 390px;
+  background: #9edfff;
+  right: -180px;
+  bottom: -160px;
+}
+
+.game-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 26px 0 35px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.brand-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: var(--purple);
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(117, 87, 232, .25);
+  font-size: 25px;
+  transform: rotate(-4deg);
+}
+
+.eyebrow,
+.section-label,
+.lesson-label {
+  display: block;
+  color: #8a80a7;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .14em;
+}
+
+.brand h1 {
+  margin: 1px 0 0;
+  font: 800 25px/1 "Baloo 2", cursive;
+}
+
+.score-card {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 7px;
+  padding: 8px 15px 8px 11px;
+  background: #fff;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 18px;
+  box-shadow: 0 8px 22px rgba(52, 45, 95, .08);
+}
+
+.score-card span {
+  grid-row: 1 / 3;
+  font-size: 24px;
+}
+
+.score-card strong {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.score-card small {
+  color: #9097a9;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.hero {
+  position: relative;
+  min-height: 350px;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  overflow: hidden;
+  padding: 38px 48px;
+  border-radius: 32px;
+  background: linear-gradient(120deg, #f0eaff, #fff3fa 55%, #e9fbff);
+  box-shadow: var(--shadow);
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 620px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.8);
+  color: #6b5e9b;
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow: 0 7px 18px rgba(77, 58, 130, .08);
+}
+
+.hero h2 {
+  margin: 14px 0 9px;
+  font: 800 clamp(42px, 6vw, 72px)/.95 "Baloo 2", cursive;
+  letter-spacing: -.03em;
+}
+
+.hero h2 span {
+  color: var(--pink);
+}
+
+.hero p {
+  max-width: 500px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 700;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.primary-btn,
+.next-btn {
+  padding: 13px 20px;
+  border-radius: 15px;
+  color: #fff;
+  background: var(--purple);
+  font-weight: 900;
+  box-shadow: 0 9px 18px rgba(117, 87, 232, .22);
+  transition: transform .2s, box-shadow .2s, background .2s;
+}
+
+.primary-btn:hover,
+.next-btn:hover {
+  transform: translateY(-2px);
+  background: var(--purple-dark);
+  box-shadow: 0 13px 25px rgba(117, 87, 232, .28);
+}
+
+.sound-btn {
+  padding: 12px 16px;
+  border: 2px solid #ded9f2;
+  border-radius: 15px;
+  background: rgba(255,255,255,.7);
+  color: #625b7a;
+  font-weight: 900;
+}
+
+.hero-character {
+  position: relative;
+  height: 290px;
+}
+
+.sun {
+  position: absolute;
+  right: 8%;
+  top: 0;
+  font-size: 67px;
+  animation: float 4s ease-in-out infinite;
+}
+
+.rainbow {
+  position: absolute;
+  right: 14%;
+  bottom: 25px;
+  font-size: 105px;
+  filter: drop-shadow(0 12px 8px rgba(91, 73, 130, .12));
+  animation: float 5s ease-in-out infinite reverse;
+}
+
+.cloud {
+  position: absolute;
+  font-size: 42px;
+  opacity: .8;
+  animation: drift 7s ease-in-out infinite;
+}
+
+.cloud-a {
+  left: 2%;
+  top: 48px;
+}
+
+.cloud-b {
+  right: 1%;
+  top: 95px;
+  font-size: 35px;
+  animation-delay: 1.4s;
+}
+
+.bear {
+  position: absolute;
+  left: 30%;
+  bottom: 13px;
+  font-size: 145px;
+  filter: drop-shadow(0 14px 12px rgba(73, 54, 95, .13));
+  animation: bounce 3s ease-in-out infinite;
+}
+
+.floating-letter {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  color: #fff;
+  font: 800 25px "Baloo 2", cursive;
+  box-shadow: 0 10px 20px rgba(53, 45, 92, .12);
+  animation: float 3.5s ease-in-out infinite;
+}
+
+.letter-a {
+  background: var(--pink);
+  left: 17%;
+  top: 15%;
+}
+
+.letter-b {
+  background: var(--mint);
+  right: 27%;
+  top: 32%;
+  animation-delay: .8s;
+}
+
+.letter-c {
+  background: var(--yellow);
+  left: 11%;
+  bottom: 18%;
+  animation-delay: 1.4s;
+}
+
+.game-panel,
+.challenge {
+  margin-top: 24px;
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 28px;
+  background: rgba(255,255,255,.84);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.panel-heading,
+.challenge-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+.panel-heading h3,
+.challenge h3 {
+  margin: 4px 0 0;
+  font: 800 30px/1 "Baloo 2", cursive;
+}
+
+.progress-wrap {
+  width: min(310px, 40%);
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  color: #858ba0;
+  font-size: 11px;
+  font-weight: 900;
+  margin-bottom: 7px;
+}
+
+.progress-label strong {
+  color: var(--purple);
+}
+
+.progress-track {
+  height: 9px;
+  border-radius: 99px;
+  overflow: hidden;
+  background: #eeeaf8;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--purple), var(--pink), var(--yellow));
+  transition: width .4s ease;
+}
+
+.letter-grid {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  gap: 9px;
+}
+
+.letter-btn {
+  aspect-ratio: 1;
+  border-radius: 14px;
+  background: #f7f5fc;
+  color: #5d6172;
+  font: 800 22px "Baloo 2", cursive;
+  transition: transform .18s, background .18s, color .18s, box-shadow .18s;
+}
+
+.letter-btn:hover {
+  transform: translateY(-3px) rotate(-2deg);
+  background: #eee9ff;
+  color: var(--purple);
+}
+
+.letter-btn.active {
+  color: #fff;
+  background: var(--purple);
+  box-shadow: 0 9px 18px rgba(117, 87, 232, .24);
+}
+
+.letter-btn.learned {
+  position: relative;
+  background: #e9faf5;
+  color: #31a889;
+}
+
+.letter-btn.learned.active {
+  color: #fff;
+  background: var(--purple);
+}
+
+.letter-btn.learned::after {
+  content: "✓";
+  position: absolute;
+  right: -3px;
+  top: -5px;
+  width: 15px;
+  height: 15px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--mint);
+  font: 900 9px "Nunito";
+}
+
+.lesson-card {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 28px;
+  align-items: center;
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #fff9e9, #fff 55%, #f6f0ff);
+  border: 1px solid #f0e9d8;
+}
+
+.lesson-visual {
+  position: relative;
+  min-height: 200px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #fff4c8;
+}
+
+.big-emoji {
+  font-size: 112px;
+  line-height: 1;
+  filter: drop-shadow(0 12px 8px rgba(87, 67, 38, .13));
+  animation: pop .45s ease both;
+}
+
+.sparkle {
+  position: absolute;
+  color: #e7b32c;
+  font-size: 24px;
+  animation: twinkle 1.8s ease-in-out infinite;
+}
+
+.sparkle-1 { left: 20px; top: 25px; }
+.sparkle-2 { right: 24px; bottom: 25px; animation-delay: .6s; }
+
+.lesson-content {
+  padding: 5px 5px 5px 0;
+}
+
+.letter-title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.letter-title-row h3 {
+  margin: 2px 0 0;
+  font: 800 72px/.8 "Baloo 2", cursive;
+  color: var(--purple);
+}
+
+.listen-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #eeeaff;
+  color: var(--purple);
+  transition: transform .2s;
+}
+
+.listen-btn:hover {
+  transform: scale(1.08);
+}
+
+.word-line {
+  margin: 15px 0 3px;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.word-line strong {
+  color: var(--pink);
+}
+
+.hint {
+  margin: 0 0 17px;
+  color: #7a8091;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.next-btn span {
+  margin-left: 7px;
+  font-size: 20px;
+}
+
+.challenge {
+  background: #fff;
+}
+
+.challenge-heading {
+  align-items: start;
+}
+
+.challenge-heading h3 {
+  margin-top: 4px;
+}
+
+.challenge-heading p {
+  margin: 7px 0 0;
+  color: #777e90;
+  font-weight: 800;
+}
+
+.answer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.answer-btn {
+  min-height: 72px;
+  padding: 10px 15px;
+  border-radius: 17px;
+  background: #f7f7fb;
+  border: 2px solid transparent;
+  color: var(--ink);
+  font-weight: 900;
+  transition: .2s ease;
+}
+
+.answer-btn:hover {
+  border-color: #c9c1f4;
+  transform: translateY(-2px);
+}
+
+.answer-btn.correct {
+  background: #e6fbf4;
+  border-color: #64d9ba;
+  color: #228d72;
+}
+
+.answer-btn.wrong {
+  background: #fff0f3;
+  border-color: #ff9bbd;
+  color: #d34e78;
+  animation: shake .35s ease;
+}
+
+.feedback {
+  min-height: 25px;
+  margin-top: 13px;
+  text-align: center;
+  font-weight: 900;
+}
+
+.feedback.good {
+  color: #229b7c;
+}
+
+.feedback.bad {
+  color: #d75d7d;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 23px 5px 0;
+  color: #8b91a1;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.celebration {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: none;
+  place-items: center;
+  padding: 20px;
+  background: rgba(48, 40, 74, .45);
+  backdrop-filter: blur(7px);
+}
+
+.celebration.show {
+  display: grid;
+}
+
+.celebration-card {
+  width: min(430px, 100%);
+  padding: 35px;
+  text-align: center;
+  border-radius: 30px;
+  background: #fff;
+  box-shadow: 0 30px 80px rgba(30, 24, 57, .25);
+  animation: pop .45s ease both;
+}
+
+.trophy {
+  font-size: 72px;
+}
+
+.celebration-card h2 {
+  margin: 5px 0 2px;
+  font: 800 43px "Baloo 2", cursive;
+  color: var(--purple);
+}
+
+.celebration-card p {
+  margin: 0 0 15px;
+  color: #70778b;
+  font-weight: 800;
+}
+
+.final-stars {
+  margin: 12px 0 22px;
+  font-size: 25px;
+  letter-spacing: 5px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(14px); }
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: scale(.75); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes twinkle {
+  0%, 100% { transform: scale(.8) rotate(0); opacity: .45; }
+  50% { transform: scale(1.25) rotate(20deg); opacity: 1; }
+}
+
+@keyframes shake {
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-3px); }
+}
+
+@media (max-width: 850px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 32px;
+  }
+
+  .hero-character {
+    height: 210px;
+  }
+
+  .bear {
+    left: 40%;
+    font-size: 110px;
+  }
+
+  .rainbow {
+    right: 15%;
+    font-size: 80px;
+  }
+
+  .letter-grid {
+    grid-template-columns: repeat(9, 1fr);
+  }
+
+  .lesson-card {
+    grid-template-columns: 190px 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .game-shell {
+    width: min(100% - 20px, 1180px);
+    padding-top: 14px;
+  }
+
+  .topbar {
+    margin-bottom: 14px;
+  }
+
+  .brand h1 {
+    font-size: 21px;
+  }
+
+  .brand-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 21px;
+  }
+
+  .hero {
+    min-height: 510px;
+    padding: 28px 22px;
+    border-radius: 25px;
+  }
+
+  .hero h2 {
+    font-size: 49px;
+  }
+
+  .hero-character {
+    height: 185px;
+  }
+
+  .bear {
+    left: 36%;
+    font-size: 98px;
+  }
+
+  .game-panel,
+  .challenge {
+    padding: 20px 15px;
+    border-radius: 23px;
+  }
+
+  .panel-heading,
+  .challenge-heading {
+    display: block;
+  }
+
+  .progress-wrap {
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  .letter-grid {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 7px;
+  }
+
+  .letter-btn {
+    border-radius: 11px;
+    font-size: 19px;
+  }
+
+  .lesson-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .lesson-visual {
+    min-height: 170px;
+  }
+
+  .lesson-content {
+    padding: 0;
+  }
+
+  .answer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
