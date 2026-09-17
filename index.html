@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABC Adventure | Alphabet Learning Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sky-shape shape-one"></div>
+  <div class="sky-shape shape-two"></div>
+
+  <main class="game-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-icon">🔤</div>
+        <div>
+          <span class="eyebrow">LEARN • PLAY • GROW</span>
+          <h1>ABC Adventure</h1>
+        </div>
+      </div>
+      <div class="score-card" aria-label="Score">
+        <span>⭐</span>
+        <strong id="score">0</strong>
+        <small>Stars</small>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="pill">🌈 Welcome, Little Learner!</span>
+        <h2>Let’s learn the <span>alphabet!</span></h2>
+        <p>Tap a letter, listen to its sound, and discover a fun word.</p>
+        <div class="hero-actions">
+          <button class="primary-btn" id="startBtn">🚀 Start Adventure</button>
+          <button class="sound-btn" id="soundToggle" aria-label="Toggle sound">🔊 Sound On</button>
+        </div>
+      </div>
+      <div class="hero-character" aria-hidden="true">
+        <div class="sun">☀️</div>
+        <div class="rainbow">🌈</div>
+        <div class="cloud cloud-a">☁️</div>
+        <div class="cloud cloud-b">☁️</div>
+        <div class="bear">🧸</div>
+        <div class="floating-letter letter-a">A</div>
+        <div class="floating-letter letter-b">B</div>
+        <div class="floating-letter letter-c">C</div>
+      </div>
+    </section>
+
+    <section class="game-panel" id="gamePanel">
+      <div class="panel-heading">
+        <div>
+          <span class="section-label">ALPHABET EXPLORER</span>
+          <h3>Choose a letter</h3>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label"><span>Progress</span><strong id="progressText">0 / 26</strong></div>
+          <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+        </div>
+      </div>
+
+      <div class="letter-grid" id="letterGrid" aria-label="Alphabet letters"></div>
+
+      <div class="lesson-card" id="lessonCard">
+        <div class="lesson-visual" id="lessonVisual">
+          <div class="sparkle sparkle-1">✦</div>
+          <div class="sparkle sparkle-2">✦</div>
+          <div class="big-emoji" id="wordEmoji">🍎</div>
+        </div>
+        <div class="lesson-content">
+          <span class="lesson-label">TODAY'S LETTER</span>
+          <div class="letter-title-row">
+            <h3 id="selectedLetter">A</h3>
+            <button class="listen-btn" id="listenBtn" title="Hear the letter">🔊</button>
+          </div>
+          <p class="word-line">A is for <strong id="wordName">Apple</strong>!</p>
+          <p class="hint" id="wordHint">A juicy red fruit that grows on trees.</p>
+          <button class="next-btn" id="nextBtn">Next Letter <span>→</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="challenge" id="challenge">
+      <div class="challenge-heading">
+        <span class="section-label">MINI CHALLENGE</span>
+        <h3>Which letter starts the word?</h3>
+        <p id="questionText">🍎 Apple starts with...</p>
+      </div>
+      <div class="answer-grid" id="answerGrid"></div>
+      <div class="feedback" id="feedback" role="status"></div>
+    </section>
+
+    <footer>
+      <span>Made for curious little minds 💛</span>
+      <span>ABC Adventure • A–Z</span>
+    </footer>
+  </main>
+
+  <div class="celebration" id="celebration" aria-hidden="true">
+    <div class="celebration-card">
+      <div class="trophy">🏆</div>
+      <h2>Fantastic!</h2>
+      <p>You completed the alphabet adventure!</p>
+      <div class="final-stars" id="finalStars">⭐ ⭐ ⭐ ⭐ ⭐</div>
+      <button class="primary-btn" id="playAgainBtn">🎈 Play Again</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
